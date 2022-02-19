@@ -1,0 +1,124 @@
+\chapter{Anexos}\label{cap:anexos}
+
+\section{Esquema General de las Leyes de Conservación}
+
+Consideramos un medio líquido, gas o sólido que ocupa una región o dominio (abierto y conexo) $\Omega \subset \mathbb{R}^n$, donde $n$ es la dimensión del espacio.
+
+Denotamos
+\[
+u = u(x,t), \qquad \qquad x \in \Omega, \quad t \geq 0
+\]
+a una función, llamada \textit{función de estado,} la cual dependiendo del problema podrá representar temperatura o bien, la concentración de una sustancia, etc. Para el análisis de las leyes de conservación, se requiere un dominio de balance escogido arbitrariamente $\Omega' \subset \Omega,$ y un intervalo de tiempo arbitrario $[t_1, t_2]$. 
+
+En general, $u$ puede ser función vectorial: $u: \Omega \longrightarrow \mathbb{R}^n$. En particular para $u$ es una función escalar para $n=1$.
+
+El caso $u$ escalar, incluye también, en general, una función fuente escalar $f=f(x,t), f:\Omega \times [0,t) \longrightarrow \mathbb{R}$ y un campo vectorial flujo, $\phi(x,t), \phi:\Omega \times [0,t) \longrightarrow \mathbb{R}^n$.
+
+Por ejemplo, si $u$ representa la temperatura, $f$ podría representar una fuente interna de calor, por ejemplo, una corriente eléctrica en el alambre y $\phi$ representa una ley física que determina la manera como cambia $u$, por ejemplo, la ley de calor de Fourier.
+
+La ley básica de balance establece que el cambio total de la cantidad $u$ contenida en $\Omega'$ entre los tiempos $t_1$ y $t_2$ debe igualar el flujo total a través de la frontera $\Omega'$ entre los tiempos $t_1$ y $t_2$ y el incremento o decremento de la cantidad $u$ produciendo por la fuente $f$, dentro de $\Omega'$ en el mismo intervalo de tiempo. En forma matemática esto queda expresado como
+\[
+\int_{\Omega'} u(x,t_2) \,dx - \int_{\Omega'} u(x,t_1) \,dx = - \int_{t_1}^{t_2} \int_{\partial \Omega'} \phi (x,t) \cdot \textbf{n} \,dS \,dt + \int_{t_1}^{t_2} \int_{\Omega'} f(x,t) \,dx \,dt.
+\]
+Si se supone que $u$ tiene primera derivada continua respecto de $t$, por medio del teorema fundamental del cálculo y del teorema de Fubini se obtiene
+\[
+\int_{\Omega'} \frac{\partial}{\partial t} u(x,t) \,dx = - \int_{\partial \Omega'} \phi(x,t) \cdot \textbf{n} \,dS + \int_{\Omega'} f(x,t) \,dx.
+\]
+Al utilizar el teorema de la divergencia, podemos escribir
+\[
+\int_{\Omega'} \right( \frac{\partial}{\partial} u(x,t) + \text{div} \thinspace \phi(x, t)- f(x,t) \left) \,dx = 0.
+\]
+
+La cual es \textit{la forma global o integral de la ley de conservación evolutiva}. Si se supone la continuidad del integrando, dado que la región $\Omega' \subset \Omega$ fue arbitraria, se obtiene \textif{la forma local o diferencial de la ley de conservación evolutiva}
+\[
+u_t (x,t) + \text{div} \thinspace \phi(x,t)-f(x,t) = 0.
+\]  
+
+\section{Ecuación de Burgers}
+Una ecuación cuasilieneal de primer orden muy importante es la \textit{ecuación de Burgers}
+\[ u_t + u \thinspace u_x = 0, \]
+la cual es una EDP no lineal que se obtiene al sustituir en la ley de de conservación evolutiva $f \equiv 0$ y $\phi = u^2 /2$.
+
+Más generalmente la ecuación 
+\[
+u_t + g(u) \thinspace u_x = 0
+\]
+se ha usado para modelar el tráfico de automóviles en una vía muy transitada, la dinámica de ciertos gases o en el modelado de la esquistosomiasis. En le caso del tráfico $\nabla \phi$ representa la cnatidad de automóviles que pasan por un punto dado y es función de la densidad de automóviles $u$. Diferentes funciones $g$ se han econtrado experimentalmente y ejemplos sencillos han sido extensivamente estudiados, por ejemplo,
+\begin{align*}
+g(u) &= cu (1-u) \\
+g(u) &= cu \qquad \qquad \text{flujo lineal} \\
+g(u) &= u^2/2 \qquad \qquad \text{flujo cuadrático}.
+\end{align*}
+La ecuación
+\begin{equation*}
+u_t + g(u) \thinspace u_x =0
+\end{equation*}
+puede ser resuelta por el método de las características.
+
+Tenemos el sistema característico
+\begin{align*}
+\frac{\,dt}{\,d\tau} (s, \tau) &= 1,\\
+\frac{\,dx}{\,d\tau} (s, \tau) &= g(u(s, \tau)),\\
+\frac{\,du}{\,d\tau} (s, \tau) &= 0.
+\end{align*}
+Así $u(s,\tau)=c_1 , t(s,\tau) = \tau+c_2$ y $x (s,\tau)=g(c_1) \tau + c_3$. 
+Si se dan las condiciones iniciales para $\tau=0$
+\begin{align*}
+x(s,0)=x_0(s), \quad t(s,0)=t_0(s) \quad \text{y} \quad u(s,0)=u_0(s),
+\end{align*}
+se obtiene la solución
+\begin{eqnarray*}
+t(s,\tau) &=& \tau + t_0(s) \\
+x(s,\tau) &=& g(u_0(s)) \tau + x_0(s) \\
+u(s,\tau) &=& u_0(s).
+\end{eqnarray*}
+
+\textbf{Ejemplo:} Resuelva el problema de valor inicial
+\begin{equation*}
+u_t + u u_x = 0
+\end{equation*}
+$$
+u(x,0) = \begin{cases}
+0,	&	x < 0, \\
+1,	&	x \geq 0.
+\end{cases}
+$$
+Para este problema la condición inicial puede ser representada paramétricamente como
+\[
+t(s,0)=0, \quad x(s,0)=s, \quad u(s,0)=u(x(s,0),0)
+\]
+Para las características tenemos el sistema
+\begin{align*}
+\frac{\,dt}{\,d\tau} (s, \tau) &= 1,\\
+\frac{\,dx}{\,d\tau} (s, \tau) &= u(s,\tau),\\
+\frac{\,du}{\,d\tau} (s, \tau) &= 0.
+\end{align*}
+Al integrar se obtiene
+\begin{eqnarray*}
+t(s,\tau) &=& \tau, \\
+u(s,\tau) &=& u(s,0) = \begin{cases}
+0, \quad s<0, \\
+1, \quad s\geq0. \end{cases}\\
+x(s,\tau) &=& s+\tau \cdot \begin{cases}
+0, \quad s<0, \\
+1, \quad s\geq0. \end{cases} 
+\end{eqnarray*}
+
+Las características pueden construirse ahora partiendo de las condiciones iniciales; por ejemplo, la característica que pasa por el punto $(-2,0)$ es $x=-2$ y la característica que pasa por $(2,0)$ es $x=2+t$. Entonces tenemos $u(-2,t)=0$ y $u(2+t,t)=1$, para $t>0$. De esta manera se ha obtenido la solución del problema en forma paramétrica.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

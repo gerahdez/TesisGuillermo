@@ -1,0 +1,354 @@
+\chapter{Clasificación de EDPs}\label{cap:clasificación}
+
+%\section{Introducción}
+Breve introducción al capítulo
+
+¿Qué motiva su clasificación? Hablar de lo siguiente:
+
+\section{Clasificación de Problemas Físicos}
+
+Los problemas en física e ingeniería se clasifican en general en tres categorías: \textbf{problemas de equilibrio, problemas de eigenvalores y problemas de propagación.}
+
+Los problemas dde equilibrio son problemas estado estacionarios en los cuales la configuración de equilibrio $\phi$ en un dominio $D$ esta determinada al resolver la ecuación diferencial
+\[ L[\phi] = f \qquad \qquad \text{en} \quad D, \]
+sujeta a condiciones de frontera
+\[ B_t[\phi] = g_t. \]
+
+Entre los ejemplos se incluyen flujos estacionarios viscosos, distribuciones de temperatura estacionaria, equilibrio de tensión en estructuras elasticas. Aunque  haya una aparente diversidad en tales problemas, las ecuaciones que gobiernan problemas de equilibrio son \textit{elipticas}.
+
+Problemas de valores propios pueden ser pensados como extensiones de problemas de equilibrio en los que se deben determinar los valores criticos de ciertos parámetros además de las configuraciones de estado estacionario correspondientes.
+
+Matemáticamente, debemos encontrar constantes $\lambda \in \mathbb{R}$, y funciones correspondientes $\phi$, tales que la ecuacion diferencial
+
+\[ L[\phi] = \lambda M[\phi]  \qquad \text{en} \thinspace D, \]
+
+y las condiciones de frontera
+
+\[
+B_t[\phi] = \lambda E_t[\phi]
+\qquad \text{en} \partial D \]
+
+Ejemplos típicos incluyen pandeo y estabilidad de estructuras, resonancia en circuitos electricos y acusticos problemas de frecuencia natural en vibraciones.
+
+Los operadores $L$ y $M$ son de tipo elípticos.
+
+Problemas de propagación son problemas de valor inicial que tienen una naturaleza transitiva o de estado no estacionario. La intención es predecir el comportamiento de un sistema a partir de un sistema inicial. Lo cual puede ser hecho al resolver la ecuación diferencial
+
+\[ L[\phi] f \qquad \text{en} D \]
+
+con las condiciones iniciales
+
+\[ I_t[\phi] = h_t \]
+
+y sujeta a las condiciones
+
+\[ B_t[\phi] = g_t \]
+
+con fronteras abiertas. $D$ es abierto. 
+
+\textbf{Show a Picture}
+
+Ejemplos típicos incluyen incluyen la propagación de ondas de presión en un fluido, propagación de calor, y el desarrollo de vibraciones auto-exitadas. Todos estos problemas son de tipo \textit{parabolico} o \textit{hiperbolico}.
+
+\section{Clasificación de Ecuaciones}
+
+Dentro de los problemas arriba descritos, se pueden presentar diferentes ecuaciones que también se pueden clasificar dependiendo del tipo de comportamiento. Para ello se requiere desarrollar el concepto de \textbf{características}.
+
+Sean $a_1, a_2, \dots, f_1, f_2$ funciones de $x,y, u(x,y)$ y $v(x,y)$ y consideremos el siguiente sistema simultáneo de primer orden cuasi-lineal.
+
+\begin{align*}
+a_1 \thinspace u_x + b_1 \thinspace u_y + c_1 \thinspace v_x + d_1 \thinspace v_y &= f_1 \\
+a_2 \thinspace u_x + b_2 \thinspace u_y + c_2 \thinspace v_x + d_2 \thinspace v_y &= f_2
+\end{align*}
+
+\textbf{Nota:} Un sistema de ecuaciones cuasi-lineal es aquel en el que las derivadas de orden más alto ocurren de manera lineal.
+
+El sistema de ecuaciones de arriba es lo suficientemente general para representar muchos de los problemas científicos en donde los modelos matemáticos son de segundo orden.
+
+Supongamos que la solución para $u$ y $v$ es conocida del estado inicial en alguna $\Gamma$. (Por ahora nos limitamos a considerar un dominio en el cual las discontinuidades en $\Gamma$ no ocurren). Para algún punto $P$ en la curva $\Gamma$ nosotros conocemos las derivas de $u$ y $v$ y sus derivadas direccionales en las direcciones bajo la curva.
+
+En general, si la solución existe en todos los puntos, la derivada direccional de $u$ en la dirección $w$ sería $\nabla u \cdot w$.
+
+\textbf{Incluir Imagen}
+
+Ahora, queremos saber si el comportamiento de la solución arriba de $P$ esta únicamente determinado por la información debajo y sobre la curva. Esto es, nos preguntamos si los datos son suficientes para determinar la derivada direccional en $P$ en direcciones que se encuentran por encima de la curva.
+
+Para ello, sea $\theta$ el álgulo con la horizontal que especifica una dirección en la cual $\sigma$ mide la distancia. Si $u_x$ y $u_y$ son conocidas en $P$, la derivada direccional es
+
+\begin{equation}
+u_{\sigma|\theta} &= \nabla u \cdot (\cos \theta, \sin \theta) \\
+&= u_x \cos \theta + u_y \sin \theta \\
+&= u_x \frac{dx}{d \sigma} + u_y \frac{dy}{d \sigma},
+\end{equation}
+
+por lo que debemos preguntarnos bajo que condiciones las derivadas  $u_x, u_y, v_x,$ y $v_y$ son determinadas de forma única en $P$ por los valores de $u$ y $v$ en $\Gamma$. 
+
+En $P$ se satisface
+
+\begin{equation}
+\,du &= u_{\sigma} \,d\sigma = u_x \,dx + u_y \,dy \\
+\,dv &= v_{\sigma} \,d\sigma = v_x \,dx + v_y \,dy
+\end{equation}
+
+y junto con el sistema de ecuaciones para $u$ y $v$, tenemos el sistema en forma matricial
+
+\[	\begin{bmatrix}
+a_1  & b_1  & c_1  & d_1 \\
+a_2  & b_2  & c_2  & d_2	\\
+\,dx & \,dy & 	0  & 0	\\
+0	 & 0	 	& \,dx & \,dy 
+\end{bmatrix}
+\begin{bmatrix}
+u_x \\
+u_y \\
+v_x \\
+v_y
+\end{bmatrix}
+=
+\begin{bmatrix}
+f_1 \\
+f_2 \\
+\,du \\
+\,dv
+\end{bmatrix}	\]
+
+Con $u$ y $v$ conocidos en $P$ las funciones coeficiente $a_1, a_2, \dots, f_1, f_2$ son conocidas. Con las direcciones de $\Gamma$ conocidas, $\,dx, \,dy$ son conocidas; y si $u$ y $v$ son conocidas a lo largo de $\Gamma$, $\,du, \,dv$ son también conocidas. Por lo tanto, una solución única para $u_x, u_y, v_x, v_y$ existe si la matriz tiene determinante distinto de cero.
+
+El caso donde el determinante es cero, implica que una multiplicidad de soluciones es posible. Por tanto, las derivadas parciales no se determinan de manera única. En consecuencia, discontinuidades en las derivadas parciales pueden ocurrir al cruzar $\Gamma$.
+
+De aquí surge la motivación de extender la teoría para poder considerar soluciones en donde tengamos estas situaciones, pues si hay discontinuidades la derivada no existe.
+
+Al igualar el determinante a cero obtenermos la \textit{ecuación característica}
+
+\begin{align*}
+(a_1 c_1 - a_2 c_1)(\,dy)^2 - (a_1d_2 - a_2d_1 + b_1c_2 - b_2c_1) \,dx \,dy
++ (b_1d_2 - b_2-d_1) (\,dx)^2 = 0,
+\end{align*}
+
+la cual es una ecuación cuadrática en $\,dy/\,dx$. 
+
+En resumen, si la curva $\Gamma$ en $P$ tiene una pendiente que satisface la ecuación característica, entonces las derivadas parciales $u_x u_y, v_x, v_y$ no se determinan de manera única por los valores de $u$ y $v$ en $\Gamma$. 
+
+Las direcciones dadas por la ecuación característica son conocidas como \textbf{direcciones características}. Las direcciones caracteristicas pueden ser reales y distintas de cero, reales e identicas, o imaginarias dependiendo de si el discriminante
+
+\begin{align*}
+(a_1d_2 - a_2d_1 + b_1c_2 - b_2c_1)^2 - 4(a_1c_2 - a_2 c_1)(b_1d_2 - b_2 d_1)
+\end{align*}
+
+es positivo, cero ó negativo.
+
+Este también es un criterio para clasificar el sistema de ecuaciones como \textbf{hiperbólico, parabólico ó elíptico}, respectivamente.
+
+El sistema es \textit{hiperbólico} si el discriminante es positivo, es decir, si hay dos direcciones reales características. Es \textit{parabólico} si el discriminante es cero, y \textit{elíptico} si no tiene direcciones características reales.
+
+Ahora, consideremos una ecuación cuasi-lineal de segundo orden
+
+\begin{align*}
+a \thinspace u_{xx} + b \thinspace u_{xy} + c \thinspace u_{yy} = f,
+\end{align*}
+
+donde $a,b,c,f$ son funciones de $x,y,y,u_x$ y $u_y$.
+
+Podemos obtener una clasificación de esta ecuación al transformarla a un sistema de ecuaciones de primer orden. También se puede hacer de manera directa. Para ello, vamos a pedir la condición de que los valores de $u, u_x$ y $u_y$ en $\Gamma$ sea suficientes para determinar $u_{xx}, u_{xy}$ y $u_{yy}$ de manera única de tal forma que la ecuación de arriba se satisfaga. Nos podemos convencer de esto último al pasar al sistema lineal.
+
+Si tales derivadas existen, debemos tener que
+
+\begin{align*}
+\,d(u_x) &= u_{xx} \,dx + u_{xy} \,dy \\
+\,d(u_y) &= u_{xy} \,dx + u_{yy} \,dy
+\end{align*}
+
+Entonces tenemos
+\[
+\begin{bmatrix}
+a	  &	  b	  &	c	\\
+\,dx  &  \,dy  &	 0	\\
+0	  &	\,dx	   & \,dy
+\end{bmatrix}
+\begin{bmatrix}
+u_{xx}	\\	u_{xy}	\\	u_{yy}	
+\end{bmatrix}
+=
+\begin{bmatrix}
+f	\\	\,d(u_x)	\\	\,d(u_y)
+\end{bmatrix}
+\]
+Entonces, la solución para $u_{xx}, u_{xy}, u_{yy}$ existe y es única a menos de que el determinante de la matriz sea cero, esto es
+
+\begin{align*}
+a (\,dy)^2 - d (\,dy)(\,dx) + c (\,dx)^2 = 0
+\end{align*}
+
+en este caso, a ecuación $a \thinspace u_{xx} + b \thinspace u_{xy} + c \thinspace u_{yy} = f$ es \textbf{hiperbólico} si $b^2 - 4ac > 0$, \textbf{parabólico} si $b^2 - 4ac = 0$ y \textbf{elíptica} si $b^2 - 4ac < 0$.
+
+Hay que notar que $a, b, c$ son funciones de $x,y,u,u_x, u_y$, por lo que una ecuaciónn puede cambiar su tipo dependiendo de la región donde se evaluen.
+
+En el caso hiperbólico, existen dos curvas características reales. Dado que las derivadas de orden alto están indeterminadas a lo largo de esas curvas, ellas proveen caminos para la propagación de discontinuidades. Las ondas de choque y otras discontinuidades se puede propagar por las características.
+
+Considere la ecuación de onda
+
+\begin{align*}
+u_{xx} - \alpha^2 u_{yy} = 0, \qquad \qquad \alpha \text{constante}
+\end{align*}
+
+las curvas características son
+
+\begin{align*}
+(\,dy)^2 - \alpha^2 (\,dx)^2 = 0
+\end{align*}
+con lo que
+\begin{align*}
+\left( \frac{\,dy}{\,dx}  \right)^2 = \alpha^2
+\end{align*}
+por lo que
+\begin{align*}
+y \pm \alpha x = \beta
+\end{align*}
+la cuales son lineas rectas.
+
+Como ejemplo más complejo, consideremos las ecuaciones para un flujo de gas irrotacional isentrópico en 2D
+
+\begin{equation}
+u u_x + v u_y + \rho^{-1} p_x &= 0 \\
+u v_x + v v_y + \rho^{-1}p_y &= 0 \\
+(\rho u)_x + (\rho v)_y &= 0 \\
+v_x + u_y = 0 \\
+p \rho^{-\gama} = cte, \qquad \frac{\,dp}{\,d\rho} = c^2
+\end{equation}
+
+donde $(u, v)$ es la velocidad, $p$ es la presión, $\rho$ densidad, $c$ es la velocidad del sonido y $\gamma$ razón de calores específicos $(\gamma = 1.4)$.
+
+Esto implica
+
+\begin{align*}
+(u^2 - c^2) u_x + (uv)u_y + (uv)v_x + (v^2 - c^2) v_y - u_y + v_x = 0
+\end{align*}
+
+Sea $5c^2 = 6(c*)^2 - (u^2 + v^2)$, donde $c*$ es una velocidad del sonido referencia que corresponde a la velocidad del sonido cuando la velocidad dle flujo $[(u^2 + v^2)]^{1/2}$ es igual a $c$.
+
+El problema se puede poner en forma adimensional definiendo
+
+\begin{align*}
+u' = u/c*, \quad v' = v/c*, \quad c' = c/c*, \quad x'=x/l, \quad y'=y/l,
+\end{align*}
+
+donde $l$ es la mitad del ancho del dominio.
+
+Sustituyendo las formas adimensionales y eliminando las primas, tenemos la ecuación de arriba con
+\[
+\begin{align*}
+c^2 = 1.2 - 0.2 (u^2 + v^2)
+\end{align*}
+lo que implica
+\begin{bmatrix}
+u^2 - c^2	&	uv		&	uv	&	v^2-c^2	\\
+0		&	-1	&	1	& 0	\\
+\,dx		&	\,dy		&	0	&	0	\\
+0	&	0	&	\,dx		&	\,dy
+\end{bmatrix}
+\begin{bmatrix}
+u_x	\\	u_y	\\	v_x	\\	v_y 
+\end{bmatrix}
+=\begin{bmatrix}
+0 \\ 0 \\ \,du \\ \,dv
+\end{bmatrix}.
+\]
+
+Las curvas caraterísticas están dadas por 
+
+\begin{align*}
+\left( \frac{\,dy}{\,dx} \right)_+ &= \frac{uv + c[u^2+v^2-c^2]^{1/2}}{u^2 - c^2}		\\
+\left( \frac{\,dy}{\,dx} \right)_- &= \frac{uv - c[u^2+v^2-c^2]^{1/2}}{u^2 - c^2}
+\end{align*}
+
+Cuando el flujo es subsónico, $u^2+v^2<c^2$, las características son complejas , y la ecuación es por lo tanto elíptica. el npumero de Frobenious es
+
+\begin{align*}
+Fr = \frac{u^2 + v^2}c^2} < 1
+\end{align*}
+
+Cuando el flujo es transónico $u^2+v^2=c^2$, por lo que la ecuación es parabólica y $Fr = 1$.
+
+Cuando el flujo es supersónico $u^2+v^2>c^2$, por lo que la ecuación es hiperbólica y $Fr > 1$.
+
+%\section{Ecuaciones Parabólicas}
+
+%Leyes físicas cuantitativas son una idealización de la realidad. A medida que el conocimiento crece  observamos que una situación fisica puede ser idealizada matemáticamente, no de forma única. 
+
+%Ahora bien, muchos fenómenos físicos involucran razones de cambio, que matemáticamente se puede traducir en derivadas parciales. De esta manera, junto con algunas simplificaciones se pueden derivar "modelos matemáticos" que consisten en Ecuaciones Diferenciales Parciales (EDPs). Al encontrar ó aproximar las soluciones de las EDPs podríamos en principio predecir la evolución del fenómeno. Sin embargo, hay algunos modelos mejores que otros.
+
+%Hadamard examinó el problema de caracterizar formulaciones ideales razonables, asertó que un problema físico esta \textit{bien planteado} si su solución \textit{existe}, es \textit{única}, y \textit{depende continuamente de los datos auxiliares}. 
+
+%El critero para un problema bien planteado es físicamente razonable en la mayoria de casos. Existencia y unicidad son una afirmación del \textit{principio de determinismo} sin la cual los experimentos no podrían ser repetidos con la expectativa de obtener datos consistentes. La dependencia continua se refiere a la consistencia con los datos, -\textit{un pequeño cambio en cualquiera de los datos del problema auxiliar debe producir un pequeño cambio correpondiente en la solución}.
+
+%Los problemas que veremos aquí se suponen que están planteados apropiadamente. La existencia y unicidad se aseguran por lo general mediante suposiciones físcias razonables. La existencia y unicidad puede llegar a ser unt ema ocmplicado, pero veremos algunos teoremas clásicos.
+
+%Ecuaciones diferenciales parabólicas que aparecen en problemas científicos y en ingeniería son a menudo de la forma
+
+%\[ u_t = L(u) \]
+
+%donde $L(u)$ es un operador diferencial parcial elíptico de segundo orden, que puede o no ser lineal.
+
+%Difusion en medios isotrópicos, conducción del calor en un medio isotrópico, flujos en medios porosos, flujos de capa límite sobre un dominio plano, etc. se pueden modelar mediante la ecuación parabólica
+
+%\begin{equation}
+%u_t &= div [ f grad u ] \\
+%	&= \nabla \cdot[f \nabla u \]
+%\end{equation}
+
+%donde $f$ puede ser constante, una función del espacio de coordenadas, o función de $u, \nabla u$ o ambos.
+
+%Muchos problemas de la teoría general de ecuaciones parábolicas (existencia, unicidad, suavidad de las soluciones, etc.) han sido desarrolladas en detalle por Friedman.
+
+%Un teorema típico de unicidad para el problema de valores iniciales y de frontera
+
+%\begin{equation}
+%L(u) = g(x, t) u_{xx} - u_t = f(x, t, u, u_x) \qquad \qquad \text{en} \quad D + B_T \\
+
+%u(x,0) = \phi(x,0), \qquad t=0
+%\end{equation}
+
+%es
+
+%\textit{Teorema de Unicidad}: Si la ecuación parabólica (cuasilineal) tiene coeficientes acotados $g(x,t)$ en $D + B_T  (D:a<x<b, B_T: 0<t<T)$ y si $f(x,t, u, w)$ es monotona decreciente en $u$, entonces existe a lo más una solución de las ecuaciones.
+
+
+\subsubsection{Ecuaciones Hiperbólicas}
+
+Muchos problemas de valor inicial que consisten en propagaciones se pueden describir por \textit{ecuaciones hiperbólicas}.
+
+Las ecuaciones hiperbólicas surgen en problemas de transporte como mecánica de ondas, dinámica de gases, vibraciones, entre otras áreas.
+
+Para iniciar el análisis de éstas ecuaciones, consideremos la ecuación de onda
+\[
+u_{tt} - u_{xx} = 0
+\]
+La solución se puede calcular de manera directa a través de la \textit{formula de D'Alembert}.
+
+Supongamos que $u$ es lo suficientemente suave de tal forma que $u_{tt}$ y $u_{xx}$ son continuas. Consideremos el siguiente cambio de coordenadas
+\begin{align*}
+\theta = x + t, \quad \psi = x-t, \quad u(x,t)=v(\theta, \psi)
+\end{align*}
+entonces
+\begin{align*}
+x = \frac{\theta + \psi}{2}, \qquad t = \frac{\theta - \psi}{2}
+\end{align*}
+y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
