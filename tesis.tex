@@ -1,0 +1,52 @@
+% Guillermo Alberto Jiménez Frías <mastergajf@gmail.com>
+
+\documentclass[12pt]{report}
+% Paquetes LaTeX y estilos globales
+\input{auxiliar/pkgs}
+\input{auxiliar/style}
+
+% Comienzo del documento
+\setlength {\marginparwidth }{2cm} 
+\begin{document}
+
+    % Portada y secciones no numeradas
+    \input{secciones/00_portada}
+    \input{secciones/00_agradecimientos}
+    \input{secciones/00_resumen}
+    \input{secciones/00_abstract}
+    
+    % Índice del documento
+    \begingroup
+        % Los enlaces son normalmente azules, pero en los índices se configuran a negro para que no aparezca todo azul
+        \hypersetup{linkcolor=black}
+        \tableofcontents
+    \endgroup
+    
+    % Cambia el estilo de números de página a normal
+    \clearpage\pagenumbering{arabic}
+    
+    % Capítulos del trabajo
+    \input{secciones/01_introduccion}    
+    \input{secciones/02_clasificacion_EDPs}
+    \input{secciones/EcCuasilineales}
+    \input{secciones/Anexos}
+    %\input{secciones/03_Analisis}
+    %\input{secciones/04_Diseño}
+    %\input{secciones/05_Implementacion}
+    %\input{secciones/06_Pruebas}
+    %\input{secciones/XX_Conclusiones}
+    
+    % Indices de figuras y códigos
+	\begingroup
+        % Los enlaces son normalmente azules, pero en los índices se configuran a negro para que no aparezca todo azul
+        \hypersetup{linkcolor=black}
+        \listoffigures
+        \lstlistoflistings
+    \endgroup    
+    
+    % Bibliografía
+    \bibliographystyle{plainnat}
+    \bibliography{bibliografia.bib}
+
+% Fin del documento
+\end{document}

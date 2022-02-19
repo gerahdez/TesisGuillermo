@@ -1,0 +1,26 @@
+# # Comando para agregar comentarios
+# / se uda para ignorar rutas relativas al archivo .gitignore /carpeta/
+# * se utiliza como una coincidencia comod√n *txt
+
+# Referencia
+# https://www.freecodecamp.org/espanol/news/gitignore-explicado-que-es-y-como-agregar-a-tu-repositorio/#:~:text=gitignore%20%2C%20es%20un%20archivo%20de,carpetas%20ignorar%20en%20un%20proyecto.&text=gitignore%20generalmente%20se%20coloca%20en,todos%20tus%20repositorios%20de%20Git.
+
+# Ignora estos archivos generados por Latex
+tesis.aux
+tesis.bbl
+tesis.blg
+tesis.lof
+tesis.log
+tesis.lol
+tesis.out
+tesis.toc
+
+# Para salir de aqui, si estas en consola, usa
+# ESC
+# o i para insertion, volver a editar
+# Guardar y Salir	:wq + ENTER
+# Salir			:q + ENTER
+# Salir SIN guardar	:q! + ENTER
+
+tesis.synctex.gz
+texput.log
