@@ -26,10 +26,10 @@ Si se supone que $u$ tiene primera derivada continua respecto de $t$, por medio 
 \]
 Al utilizar el teorema de la divergencia, podemos escribir
 \[
-\int_{\Omega'} \right( \frac{\partial}{\partial} u(x,t) + \text{div} \thinspace \phi(x, t)- f(x,t) \left) \,dx = 0.
+\int_{\Omega'} \left( \frac{\partial}{\partial t} u(x,t) + \text{div} \thinspace \phi(x, t)- f(x,t) \right) \,dx = 0.
 \]
 
-La cual es \textit{la forma global o integral de la ley de conservación evolutiva}. Si se supone la continuidad del integrando, dado que la región $\Omega' \subset \Omega$ fue arbitraria, se obtiene \textif{la forma local o diferencial de la ley de conservación evolutiva}
+La cual es \textit{la forma global o integral de la ley de conservación evolutiva}. Si se supone la continuidad del integrando, dado que la región $\Omega' \subset \Omega$ fue arbitraria, se obtiene \textit{la forma local o diferencial de la ley de conservación evolutiva}
 \[
 u_t (x,t) + \text{div} \thinspace \phi(x,t)-f(x,t) = 0.
 \]  
@@ -101,7 +101,7 @@ u(s,\tau) &=& u(s,0) = \begin{cases}
 1, \quad s\geq0. \end{cases}\\
 x(s,\tau) &=& s+\tau \cdot \begin{cases}
 0, \quad s<0, \\
-1, \quad s\geq0. \end{cases} 
+1, \quad s\geq0. \end{cases}
 \end{eqnarray*}
 
 Las características pueden construirse ahora partiendo de las condiciones iniciales; por ejemplo, la característica que pasa por el punto $(-2,0)$ es $x=-2$ y la característica que pasa por $(2,0)$ es $x=2+t$. Entonces tenemos $u(-2,t)=0$ y $u(2+t,t)=1$, para $t>0$. De esta manera se ha obtenido la solución del problema en forma paramétrica.
