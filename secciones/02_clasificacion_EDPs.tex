@@ -9,7 +9,7 @@ Breve introducción al capítulo
 
 Los problemas en física e ingeniería se clasifican en general en tres categorías: \textbf{problemas de equilibrio, problemas de eigenvalores y problemas de propagación.}
 
-Los problemas dde equilibrio son problemas estado estacionarios en los cuales la configuración de equilibrio $\phi$ en un dominio $D$ esta determinada al resolver la ecuación diferencial
+Los problemas de equilibrio son problemas estado estacionarios en los cuales la configuración de equilibrio $\phi$ en un dominio $D$ esta determinada al resolver la ecuación diferencial
 \[ L[\phi] = f \qquad \qquad \text{en} \quad D, \]
 sujeta a condiciones de frontera
 \[ B_t[\phi] = g_t. \]
@@ -296,7 +296,7 @@ Para iniciar el análisis de éstas ecuaciones, consideremos la ecuación de ond
 \[
 u_{tt} - u_{xx} = 0
 \]
-La solución se puede calcular de manera directa a través de la \textit{formula de D'Alembert}.
+donde la solución se puede calcular de manera directa a través de la \textit{formula de D'Alembert}.
 
 Supongamos que $u$ es lo suficientemente suave de tal forma que $u_{tt}$ y $u_{xx}$ son continuas. Consideremos el siguiente cambio de coordenadas
 \begin{align*}
@@ -321,9 +321,7 @@ Notemos que
 &= \frac{1}{4} \left( u_{xx} - u_{tt} \right) \\
 &= 0
 \end{align*}
-Por lo que $v_{\theta \psi} = 0$, llegando a que $v$ es de la forma $v = f(\theta) + g(\psi)$, donde $f,g$ son funciones diferenciables arbitrarias.
-
-Regresando a nuestra ecuación inicial tenemos que
+Por lo que $v_{\theta \psi} = 0$, llegando a que $v$ es de la forma $v = f(\theta) + g(\psi)$, donde $f,g$ son funciones diferenciables arbitrarias. En consecuencia, regresando a nuestra ecuación inicial tenemos que
 \[
 u(x,t) = f(x+t) + g(x-t).
 \]
@@ -359,13 +357,15 @@ que, por las condiciones iniciales, tenemos $u(x,0) = F(x) = F(x) + K_3$, por lo
 u(x,t) = \frac{1}{2} \left[ F(x+t) - F(x-t) + \int_{x-t}^{x+t} G(\nu) \,d\nu \right]
 \]
 
-Como observación inmediata, podemos decir que el valor de la solución en el punto $(x_0,t_0)$ dependen solo de los valores iniciales del eje $X$ cortados por las lineas $x-t=x_0-t_0$ y $x+t=x_0+t_0$. A este segmento se le conoce como el intervalo de dependencia del punto $(x_0, t_0)$.
+Una importante observación es evidente de la fórmula anterior. El valor de la solución en $(x_0,t_0)$ dependende solo de los valores iniciales del eje $X$ ubicados entre las lineas $x-t=x_0-t_0$ y $x+t=x_0+t_0$. A este segmento se le conoce como el intervalo de dependencia del punto $(x_0, t_0)$.
 
 \textbf{Muestra Imagen}
 
 \textbf{Nota:} La información viaja a velocidad finita en las soluciones de las ecuaciones hiperbólicas.
 
-Por otro lado, la region influenciada por el punto inicial $(x_0, 0)$ es la región acotada por las líneas $x+t = x_0$ y $x-t=x_0$. A esto se le conoce como el \textit{dominio de influencia} del punto $(x_0, 0)$.
+Por otro lado, la región de puntos $(x,t)$ en donde la solución es influenciada por el punto inicial $(x_0,0)$ es la región acotada por las líneas $x+t = x_0$ y $x-t=x_0$. A esto se le conoce como el \textit{dominio de influencia} del punto $(x_0, 0)$.
+
+así, vemos que las características ($x+t = Cte$ es la ecuación $u_{xx} - u_{tt} = 0$) juegan un rol básico en el desarrollo de soluciones para ecuaciones hiperbólicas.
 
 \textbf{Muestra Imagen}
 
@@ -387,22 +387,157 @@ Luego
 
 Creo que en esta parte es oportuno mencionar ciertos flujos y lo que modela, p.e. $f=f(u_x) = -v u_x$, la cual provoca la ecuación del calor que es parabólica.
 
+\textbf{Lo anterior fue de la págin 6 de las notas}
+
+¿Qué pasa para ecuaciones más generales? Ya sean lineales o no lineales
+
+Primero notemos que la ecuación de transporte
+\[
+u_t + a \thinspace u_x = 0,
+\]
+con $a$ constante, satisface el hecho de que cualquier solución de ésta es solución a una ecuación de onda
+\[
+u_{tt} - a^2 u_{xx}
+\]
+pues 
+\begin{align*}
+u_{tt} = \partial_t (-a \thinspace u_x) = -a \partial_x (u_t) = a^2 \thinspace u_{xx}.
+\end{align*}
+También notemos que la ecuación de onda es hiperbólica, $0-4*1*(-a^2) = 4a^2>0$ independientemente del signo de $a$.
+
+Analicemos entonces el problema de valor inicial con la ecuación de transporte
+\[
+\begin{cases}
+u_t + au_x = 0	\\
+u(x,t) = u_0(x)
+\end{cases}
+\]
+La solución es
+\[
+u(x,t) = u_0(x-a\thinspace t)
+\]
+
+\textbf{Mostrar Imagen}
+
+Ahora nos preguntamos, ¿qué suscedería si tenemos el coeficiente variable $a=a(x)$? Y más aún, ¿Podemos encontrar solución?
+
+Para ello desarrolaremos y aplicaremos un procedimiento muy usado para intentar resolver muchos problemas de éste tipo y más generales, el \textit{método de las características}.
+
+Busquemos una curva $(x(t), t)$ en el espacio fase en donde $u(x,t)$ es constante
+\begin{align*}
+0 &= \frac{d}{d t} u(x(t), t) \\
+  &= u_x \frac{dx}{dt} + u_t
+\end{align*}
+Por lo que al comparar con nuestro problema de coeficiente variable, la ecuación para la curva característica en este caso es
+\[
+\frac{dx}{dt} = a(x(t))
+\]
+la cual es una ecuación diferencial ordinaria.
+
+Observemos que, si $a=$Cte., entonces $x(t) = x_0 + at$. Por lo que si $u(x,t)$ es constante sobre la curva, en particular $u(x,t) = u_0(x_0)$, donde $x_0 = x-at$; y por lo tanto
+\[
+u(x,t) = u_0(x-at)
+\]
+
+Otro caso es si $a(x)=x$. La ecuación característica es
+\[
+\frac{dx}{dt} = x'(t) = a(x(t)) = x(t),
+\]
+con lo que la curva característica resulta ser $x(t) = x_0 \thinspace e^{t}$. La solución general del problema de valor inicial resulta ser $u(x,t) = u_0(x \thinspace e^{-t})$.
+
+En general, $\frac{dx}{dt} = a(x(t))$ se puede serolver por separación de variables.
+
+Notemos que por el teorema de existencia y unicidad de EDO's podemos ver que dos curvas características con condiciones iniciales distintas nunca se intersectan. Sin embargo, esto no se garantiza con ecuaciones no-lineales.
+
+Cuando dos curvas caracterpisticas chocan, podemos tener la formación de discontinuidades.
+
+Como podemos ver, la información se propaga a velocidad finita en ecuaciojnes hiperbólicas, pero también veremos que esta información viaja a distintas velocidades en distintas partes del dominio en ecuaciones no-lineales.
+
+\textbf{¿Qué ocurre en sistemas no-lineales?}
+
+Motivación física: Consideremos leyes de conservación escalares.
+
+Consideremos un ducto con sección transversal suficientemente corta con respecto a la longitud del ducto, de tal forma que el material que está pasando con densidad $u(x,t)$ no varía mucho en la sección transversal.
+
+De ésta manera, el ducto se puede considerar unidimensional, sea $x$ la posición axial del ducto y $t$ el tiempo.
+
+SUpongamos que el fluido que está pasando por el ducto está sujeto a una dinámica con un flujo expresado en masa por unidad de área por unidad de tiempo dado por la función $f$. Así, $u = u(x,t)$ es la densidad en $x$ a tiempo $t$ y $
+f$ es el flujo. Si $f>0$ el flujo se mueve a la derecha; respectivamente si $f<0$ el flujo se mueve a la izquierda.
+
+Vamos a considerar un principio de conservación de masa
+
+\textit{Conservación: } Caso hiperbólico $f = f(u)$.
+
+\textbf{Esto puedo representarlo mejor con el libro de LeVeque}
+
+Si $u$ es la densidad entonces
+\[
+\int_{x_0}^{x_1} u(x,t) \,dx
+\]
+es la masa en $[x_0, x_1]$ al tiempo $t$.
+\[
+\frac{d}{dt} \int_{x_0}^{x_1} u(x,t) \,dx
+\]
+es la razón de cambio de masa.
+
+\textit{Ley: } La razón de cambio de masa resulta del material que entra y sale de acuerdo al flujo $f$ por las frotneras $(x=x_0, x=x_1)$.
+
+Matemáticamente
+
+\textit{de nuevo, esto lo puedo encontrar en el apendice 1}
+\begin{align*}
+\frac{d}{dt} \int_{x_0}^{x_1} u(x,t) \,dx &= -f(u(x_1,t)) + f(u(x_0, t)) \\
+			&= - \int_{x_0}^{x_1} \partial_x f(u(x,t)) \,dx	
+\end{align*}
+con lo que
+\[
+\int_{x_0}^{x_1} \left[ \partial_t u + \partial_x(f(u(x,t))) \right] \,dx = 0
+\]
+como suponemos que $u$ y $f$ son suaves y al recordar que $[x_0, x_1]$ fue arbitrario, se concluye la \textit{Ley de conservación escalar}
+\[
+\partial_t u + (f(u(x,t)))_x = 0
+\]
+
+Las ecuaciónes de tipo hiperbólico a menudo corresponden a funciones $f$ que dependen explícitamente de $u$, osea $f = f(u)$.
+
+Por ejemplo, $f(u) = a \thinspace u$, que es lineal y nos produce la ecuación de transporte.
+
+La ecuación no lineal más sencilla y conocida es cuando $f(u) = \frac{1}{2} u^2$, que es llamada \textit{ecuación de Burgers}
+\[
+u_t + u \thinspace u_x = 0.
+\]
 
 
+\textbf{Puedo complementar con el libro el siguiente ejemplo}
+Podemos preguntarnos en que contexto surge ésta ecuación, para ello tenemos le siguiente ejemplo
+
+Sea $D \subset \mathbb{R}$ un dominio y un fluido moviendose dentro. Sea $\rho = \rho(x,t)$ la densidad en $x \in D$ a tiempo $t$, y $ = (u, v, w)$
 
 
+\textbf{Volviendo a la ecuación de Burgers}
 
+Calculemos la solución usando el método de las curvas características.
+\[
+\begin{cases}
+u_t + u u_x = 0 \\
+u(x,0) = u_0(x) = \begin{cases}
+				  0, & x\leq0 \\
+				  x, & 0<x\leq 1 \\
+				  2-x, & 1\leq x \leq 2 \\
+				  0, x>2
+				  \end{cases}
+\end{cases}
+\]
 
-
-
-
-
-
-
-
-
-
-
-
+\textbf{Mostrar Imagen}
+La ecuación de la curva característica es
+\[
+\frac{dx}{dt} = u(x(t), t)
+\]
+pues al calcular la derivada total de $u$
+\[
+0 = \frac{d}{dt} u(x(t), t) = u_t + \frac{dx}{dt} u_x
+\]
+Como 
 
 
